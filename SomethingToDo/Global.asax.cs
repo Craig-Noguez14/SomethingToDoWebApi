@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SomethingToDo.App_Start;
+using SomethingToDo.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +15,10 @@ namespace SomethingToDo
     {
         protected void Application_Start()
         {
+            var container = DependencyInjectionConfiguration.Register();
+
+            GlobalConfiguration.Configuration.DependencyResolver = new UnityResolver(container);
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
