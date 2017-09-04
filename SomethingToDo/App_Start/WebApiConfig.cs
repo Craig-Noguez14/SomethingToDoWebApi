@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SomethingToDo.Cache;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -10,6 +11,7 @@ namespace SomethingToDo
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            EventCache.RefreshEvents();
 
             // Web API routes
             config.MapHttpAttributeRoutes();

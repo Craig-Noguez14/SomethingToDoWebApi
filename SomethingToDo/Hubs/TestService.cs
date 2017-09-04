@@ -1,4 +1,8 @@
 ﻿using Microsoft.AspNet.SignalR;
+using SomethingToDo.Cache;
+using SomethingToDo.DTO.Event;
+using SomethingToDo.DTO.User;
+using SomethingToDo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +27,7 @@ namespace SomethingToDo.Hubs
 
         private void OnTimerElapsed(object sender)
         {
-            hub.Clients.All.Send(DateTime.UtcNow.ToString());
+            hub.Clients.All.Send(EventCache.Events);
         }
 
         public void Stop(bool immediate)

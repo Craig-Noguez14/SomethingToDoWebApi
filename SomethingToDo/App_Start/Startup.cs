@@ -5,6 +5,8 @@ using Owin;
 using Microsoft.AspNet.SignalR;
 using Microsoft.Owin.Cors;
 using SomethingToDo.Hubs;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 [assembly: OwinStartup(typeof(SomethingToDo.App_Start.Startup))]
 
@@ -14,6 +16,12 @@ namespace SomethingToDo.App_Start
     {
         public void Configuration(IAppBuilder app)
         {
+            // Create JsonSerializer with StringEnumConverter.
+            var serializer = new JsonSerializer();
+            serializer.Converters.Add(new StringEnumConverter());
+            // Register the serializer.
+            GlobalHost.DependencyResolver.Register(typeof(JsonSerializer), () => serializer);
+
             app.Map("/signalr", map =>
             {
                 // Setup the CORS middleware to run before SignalR.

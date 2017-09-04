@@ -9,5 +9,7 @@ namespace SomethingToDo.Repositories.Event
     public interface IEventRepository
     {
         Task CreateAsync(Models.Event evnt);
+
+        Task<List<Models.Event>> GetAll();
     }
 }

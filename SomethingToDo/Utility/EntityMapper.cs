@@ -14,7 +14,7 @@ namespace SomethingToDo.Utility
         {
             var result = new Event
             {
-                CreatedOn = eve.StartOn,
+                StartsOn = eve.StartOn,
                 ExpiresOn = eve.ExpiresOn,
                 SubCategoryId = (int) eve.SubCategory,
                 Location = eve.Location,

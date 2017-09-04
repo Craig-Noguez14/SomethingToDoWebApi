@@ -23,7 +23,7 @@ namespace SomethingToDo.Models
 
         public DateTime LastUpdatedOn { get; set; }
 
-        public DateTime CreatedOn { get; set; }
+        public DateTime StartsOn { get; set; }
 
         public DateTime ExpiresOn { get; set; }
 
